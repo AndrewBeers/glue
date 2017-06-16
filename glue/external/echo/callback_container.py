@@ -52,13 +52,13 @@ class CallbackContainer(object):
     def __contains__(self, value):
         if self.is_bound_method(value):
             for callback in self.callbacks[:]:
-                if value.__func__ is callback[0]() and value.__self__ is callback[1]():
+                if len(callback) == 3 and value.__func__ is callback[0]() and value.__self__ is callback[1]():
                     return True
             else:
                 return False
         else:
             for callback in self.callbacks[:]:
-                if value.__func__ is callback[0]:
+                if len(callback) == 2 and value.__func__ is callback[0]:
                     return True
             else:
                 return False
@@ -85,9 +85,9 @@ class CallbackContainer(object):
     def remove(self, value):
         if self.is_bound_method(value):
             for callback in self.callbacks[:]:
-                if value.__func__ is callback[0]() and value.__self__ is callback[1]():
+                if len(callback) == 3 and value.__func__ is callback[0]() and value.__self__ is callback[1]():
                     self.callbacks.remove(callback)
         else:
             for callback in self.callbacks[:]:
-                if value is callback[0]:
+                if len(callback) == 2 and value is callback[0]:
                     self.callbacks.remove(callback)
