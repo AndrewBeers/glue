@@ -64,9 +64,7 @@ class CallbackContainer(object):
                 return False
 
     def __iter__(self):
-        print("START LOOP")
         for callback in sorted(self.callbacks, key=lambda x: x[-1], reverse=True):
-            print("CALLBACK", callback)
             if len(callback) == 3:
                 func = callback[0]()
                 inst = callback[1]()
