@@ -25,7 +25,6 @@ from glue.app.qt.layer_tree_widget import PlotAction, LayerTreeWidget
 from glue.app.qt.preferences import PreferencesDialog
 from glue.viewers.matplotlib.qt.widget import defer_draw
 from glue.viewers.common.qt.data_viewer import DataViewer
-from glue.viewers.image.qt import ImageWidget
 from glue.viewers.scatter.qt import ScatterViewer
 from glue.utils import nonpartial
 from glue.utils.qt import (pick_class, GlueTabBar,

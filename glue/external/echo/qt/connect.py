@@ -277,8 +277,8 @@ def _find_combo_text(widget, value):
 
     Raises a ValueError if data is not found
     """
-    i = widget.findText(value)
-    if i == -1:
-        raise ValueError("%s not found in combo box" % value)
+    for idx in range(widget.count()):
+        if widget.itemText(idx) == value:
+            return idx
     else:
-        return i
+        raise ValueError("%s not found in combo box" % value)
